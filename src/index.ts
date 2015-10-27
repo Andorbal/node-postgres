@@ -3,20 +3,20 @@
 import {  Config } from './knexfile';
 import * as Knex from 'knex';
 
-let k = Knex(Config['dev']);
+let knex = Knex(Config['dev']);
 
-k('pets')
+knex('pets')
   .truncate()
-  .then(() => k('users').del())
-  .then(() => k.insert({name: 'John Doe'}, 'id').into('users'))
+  .then(() => knex('users').del())
+  .then(() => knex.insert({name: 'John Doe'}, 'id').into('users'))
   .then(ids => {
-    return k.insert(
+    return knex.insert(
         [{name: "Fluffers", type: "cat", user_id: ids[0]},
         {name: "Spot", type: "dog", user_id: ids[0]}])
       .into('pets');
   })
   .then(() => {
-    return k.select('users.name as userName', 'pets.type', 'pets.name')
+    return knex.select('users.name as userName', 'pets.type', 'pets.name')
       .from('users')
       .innerJoin('pets', 'users.id', 'pets.user_id');
   })
@@ -27,8 +27,8 @@ k('pets')
 
     return;
   })
-  .then(() => k.destroy())
+  .then(() => knex.destroy())
   .catch(function(err) {
     console.error(err);
-    k.destroy();
+    knex.destroy();
   });

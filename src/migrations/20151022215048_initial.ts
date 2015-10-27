@@ -1,5 +1,8 @@
+/// <reference path="../../typings/tsd.d.ts" />
 
-exports.up = (knex, Promise) => {
+import * as Knex from 'knex'
+
+exports.up = (knex : Knex, Promise) => {
   return knex.schema
     .createTable('users', table => {
       table.increments();
@@ -15,7 +18,7 @@ exports.up = (knex, Promise) => {
     });
 };
 
-exports.down = (knex, Promise) => {
+exports.down = (knex : Knex, Promise) => {
   return knex.schema
     .dropTable('pets')
     .dropTable('users');
