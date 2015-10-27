@@ -1,13 +1,13 @@
 
-exports.up = function(knex, Promise) {
+exports.up = (knex, Promise) => {
   return knex.schema
-    .createTable('users', function (table) {
+    .createTable('users', table => {
       table.increments();
       table.string('name', 100).notNullable();
       table.date('birth_date')
       table.timestamps();
     })
-    .createTable('pets', function (table) {
+    .createTable('pets', table => {
       table.increments();
       table.string('name', 50).notNullable();
       table.string('type', 20).notNullable();
@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
     });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = (knex, Promise) => {
   return knex.schema
     .dropTable('pets')
     .dropTable('users');

@@ -1,7 +1,29 @@
-// Update with your config settings.
+/// <reference path="../typings/tsd.d.ts" />
 
-module.exports = {
+import * as Knex from 'knex';
 
+export class Config {
+  static dev : Knex.Config = {
+    client: 'postgresql',
+    connection: {
+        host: 'localhost',
+        database: 'node-postgres-dev',
+        user: 'postgres',
+        password: 'mysecretpassword'
+    },
+    pool: {
+        min: 2,
+        max: 10
+    },
+    migrations: {
+        tableName: 'knex_migrations'
+    }
+  };
+}
+
+/*
+
+let config = {
   development: {
     client: 'postgresql',
     connection: {
@@ -50,5 +72,12 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 };
+
+exports class Foo {
+
+}
+
+export config;
+
+*/
