@@ -22,6 +22,7 @@
         "!node_modules/**"
     ],
     "files": [
+        "app.ts",
         "index.ts",
         "knexfile.ts",
         "migrations/20151022215048_initial.ts"

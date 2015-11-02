@@ -9,10 +9,19 @@
       "commit": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
     },
     "node/node.d.ts": {
-      "commit": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     },
     "bluebird/bluebird.d.ts": {
       "commit": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
+    },
+    "express/express.d.ts": {
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
+    },
+    "mime/mime.d.ts": {
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     }
   }
 }

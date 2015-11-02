@@ -6,4 +6,4 @@ COPY out /
 
 ENTRYPOINT ["node"]
 
-CMD ["/index.js"]
+CMD ["/app.js"]
