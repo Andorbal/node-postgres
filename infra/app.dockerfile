@@ -1,9 +1,7 @@
 FROM codestuffers/node-base:5
 
 WORKDIR /var/app
-COPY node_modules /node_modules/
-COPY out /
+COPY node_modules node_modules/
+COPY out out
 
-ENTRYPOINT ["node"]
-
-CMD ["/app.js"]
+CMD ["node", "out/app.js"]
