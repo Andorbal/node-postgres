@@ -17,6 +17,8 @@ let server = app.listen(3000, function() {
   console.log('Example app listening at http://%s:%s', host, port);
 });
 
+// Handle a SIGINT because Node won't stop when running in Docker
+// without it
 process.on('SIGINT', function() {
   server.close();
   process.exit(0);

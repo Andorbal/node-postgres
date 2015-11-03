@@ -1,0 +1,17 @@
+web:
+  build: .
+  dockerfile: ./infra/app.dockerfile
+  ports:
+   - "10000:3000"
+  volumes:
+   - ./out:/var/app/out
+  environment:
+   POSTGRES_USER: test_user
+   POSTGRES_PASSWORD: foobarbaz
+  links:
+   - db
+db:
+  image: postgres:9.4
+  environment:
+    POSTGRES_USER: test_user
+    POSTGRES_PASSWORD: foobarbaz
