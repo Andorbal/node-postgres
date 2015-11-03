@@ -2,6 +2,8 @@
 /// <reference path="./knexfile.ts" />
 
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
+
 import * as Knex from 'knex';
 import { Config } from './knexfile';
 
@@ -14,11 +16,13 @@ let app = express();
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 app.get('/', (req, res) => {
     console.log("Requested...");
-    knex.select('users.name as userName', 'pets.type', 'pets.name')
+    knex.select('id', 'name')
         .from('users')
-        .innerJoin('pets', 'users.id', 'pets.user_id')
         .then(rows => {
             for (var i = 0; i < rows.length; i++) {
                 console.log(rows[i]);
@@ -29,8 +33,27 @@ app.get('/', (req, res) => {
         });
 });
 
-app.get('/insert', (req, res) => {
-    knex.insert({ name: 'John Doe' }, 'id').into('users')
+app.get('/details/:id', (req, res) => {
+    console.log("Requested...");
+    knex.select('users.name as userName', 'pets.type', 'pets.name')
+        .from('users')
+        .leftJoin('pets', 'users.id', 'pets.user_id')
+        .where({"users.id": req.params.id})
+        .then(rows => {
+            for (var i = 0; i < rows.length; i++) {
+                console.log(rows[i]);
+            }
+
+            res.render("details", { userName: rows[0].userName, pets: rows });
+            return;
+        });
+});
+
+
+app.get('/insert', (req, res) => res.render("insert"));
+
+app.post('/insert', (req, res) => {
+    knex.insert({ name: req.body.userName }, 'id').into('users')
         .then(ids => {
             return knex.insert(
                 [{ name: "Fluffers", type: "cat", user_id: ids[0] },

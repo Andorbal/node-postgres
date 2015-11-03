@@ -4,6 +4,8 @@ html(lang="en")
     title!= title
   body
     h1!= message
+    a(href="/insert") Insert
     ul
       - each item in users
-        li= item.userName
+        li
+          a(href="/details/#{item.id}")= item.name

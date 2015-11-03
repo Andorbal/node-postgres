@@ -1,0 +1,10 @@
+doctype 
+html(lang="en")
+  head
+    title!= title
+  body
+    h1!= userName
+    a(href="/") Back
+    ul
+      - each item in pets
+        li #{item.name} (#{item.type})

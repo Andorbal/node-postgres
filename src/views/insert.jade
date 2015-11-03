@@ -1,0 +1,10 @@
+doctype 
+html(lang="en")
+  head
+    title!= title
+  body
+    h1 Insert something
+    form(action="/insert", method="POST")
+      label userName
+        input(name="userName")
+      input(type="submit")
