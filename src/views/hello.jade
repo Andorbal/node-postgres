@@ -4,3 +4,6 @@ html(lang="en")
     title!= title
   body
     h1!= message
+    ul
+      - each item in users
+        li= item.userName

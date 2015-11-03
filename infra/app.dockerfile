@@ -1,7 +1,9 @@
 FROM codestuffers/node-base:5
 
+COPY package.json /var/app/
 WORKDIR /var/app
-COPY node_modules node_modules/
-COPY out out
+RUN npm install
+COPY out /var/app/out/
+WORKDIR /var/app/out
 
-CMD ["node", "out/app.js"]
+CMD ["node", "app.js"]
