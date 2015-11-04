@@ -80,6 +80,12 @@ function startServer() {
         server.close();
         process.exit(0);
     });
+
+    process.on('SIGTERM', function() {
+        knex.destroy();
+        server.close();
+        process.exit(0);
+    });
 }
 
 function createConnection() {
