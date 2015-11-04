@@ -9,7 +9,7 @@ web:
   ports:
     - "10000:3000"
   volumes:
-    - ./out:/var/app/out
+    - ./src:/var/app/src
 db:
   image: postgres:9.4
   environment:

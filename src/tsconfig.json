@@ -13,8 +13,7 @@
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "sourceMap": true,
-        "outDir": "../out"
+        "sourceMap": true
     },
     "filesGlob": [
         "**/*.ts",

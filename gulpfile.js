@@ -9,8 +9,8 @@ var path = require('path');
 
 var paths = {
       src: './src/',
-      tests: './out/tests/',
-      dest: './out/'
+      tests: './src/tests/',
+      dest: './src/'
 };
 
 gulp.task('default', ['buildrun']);
